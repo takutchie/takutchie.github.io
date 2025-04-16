@@ -1,133 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine Surprise</title>
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    background: linear-gradient(to right, #ffe6e6, #ffc2d1);
-    padding-top: 50px;
-    color: #5e002d;
-    animation: bgFade 10s infinite alternate;
-  }
-
-  @keyframes bgFade {
-    0% { background: linear-gradient(to right, #ffe6e6, #ffc2d1); }
-    100% { background: linear-gradient(to right, #ffc2d1, #ffe6e6); }
-  }
-
-  .heart {
-    font-size: 100px;
-    color: red;
-    animation: pulse 1.2s infinite ease-in-out, glow 1.2s infinite ease-in-out;
-    text-shadow: 0 0 10px red, 0 0 20px #ff3399, 0 0 30px #ff66cc;
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-  }
-
-  @keyframes glow {
-    0%, 100% {
-      text-shadow: 0 0 10px red, 0 0 20px #ff3399, 0 0 30px #ff66cc;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6e6;
+      margin-top: 100px;
     }
-    50% {
-      text-shadow: 0 0 20px #ff4d94, 0 0 40px #ff99cc;
+    h1 {
+      color: #ff4d4d;
     }
-  }
-
-  h1 {
-    font-size: 32px;
-    color: #b30047;
-    margin-bottom: 30px;
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .button {
-    padding: 12px 30px;
-    font-size: 18px;
-    margin: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(to right, #ff4da6, #ff99cc);
-    color: white;
-    box-shadow: 0 4px 10px rgba(255, 77, 166, 0.4);
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-
-  .button:hover {
-    background: linear-gradient(to right, #e6005c, #ff66b2);
-    transform: scale(1.05);
-  }
-
-  #message {
-    display: none;
-    margin: 40px auto;
-    max-width: 600px;
-    font-size: 20px;
-    padding: 20px;
-    background-color: #fff0f5;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
-    line-height: 1.6;
-    color: #660029;
-  }
-
-  #doubtText {
-    color: #b3003b;
-    font-size: 20px;
-    margin-top: 30px;
-    animation: blink 2s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-</style>
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #yesBtn {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    #noBtn {
+      background-color: #ccc;
+      color: #333;
+    }
+    #message {
+      font-size: 18px;
+      color: #990000;
+      margin-top: 20px;
+      height: 24px;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="heart">♥</div>
-  <h1>Click below for a Valentine's surprise!</h1>
-
-  <button class="button" onclick="showMessage()">Show Message</button>
-  <button class="button" onclick="hideMessage()">Hide Message</button>
-
-  <div id="message">
-      <h3>2 years, 2 months, 4 weeks.</h3>
-    Thank you bee sa tanan nga hinatag mo sakon, thank you sa pag palangga mo sakon, sa tanan nga natabo sakon bee ikaw ang pinaka manami nga nag abot sakon (double meaning) salamat simo bee kundi tungod simo di ko maimagine kaugalingon ko kung wala ka, thank you sa pag ugtas kg pag paugtas sakon, thank you sa pag buga kalayo kg pag angga mo sakon, gapangamuyo lg ko nga kabay pa maski ano matabo saton wala may matabo nga bayaay, kg kung ano man maabot saton nga duha hinde ta mag talikdanay, palangga tagd ka sobra sobra bee, thank you sa pagiging best friend, manang, nanay, tita kg sa pagiging all in one.
-
-I love you bee.
-
-  </div>
-
-  <div id="doubtText">
-    Show message lg bala nano man<br>
-    Sige na bala bee
-  </div>
+  <h1>Happy 2y, 2m, 4w!</h1>
+  <button id="yesBtn">Open Message</button>
+  <button id="noBtn">Cancel</button>
+  <div id="message"></div>
 
   <script>
-    function showMessage() {
-      document.getElementById('message').style.display = 'block';
-      document.getElementById('doubtText').style.display = 'none';
-    }
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const message = document.getElementById('message');
+    let noBtnSize = 18;
+    const messages = [
+      "Ang isa ya bee",
+      "Tung isa gani bee o",
+      "Nami ka ang pula bala",
+      "Luyo nagd lg pru",
+      "Yuga mo bee sige na bala",
+      "Ang red gani bee ☹️",
+      "Yuts man bee",
+      "Di mo na ko guro palangga",
+    ];
+    let clickCount = 0;
 
-    function hideMessage() {
-      document.getElementById('message').style.display = 'none';
-      document.getElementById('doubtText').style.display = 'block';
-    }
+    noBtn.addEventListener('click', () => {
+      clickCount++;
+      noBtnSize -= 2;
+      if (noBtnSize <= 6) noBtnSize = 6;
+      noBtn.style.fontSize = noBtnSize + "px";
+      noBtn.style.padding = (noBtnSize / 2) + "px " + (noBtnSize) + "px";
+      message.textContent = messages[clickCount % messages.length];
+    });
+
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `
+      <h2 style="color:#ff4d4d;">2 years, 2 months, 4 weeks</h2>
+      <h4 style="color:#ff4d4d;">
+        Thank you bee sa tanan nga hinatag mo sakon, thank you sa pag palangga mo sakon, 
+        sa tanan nga natabo sakon bee ikaw ang pinaka manami nga nag abot sakon (double meaning). 
+        Salamat simo bee, kundi tungod simo di ko maimagine kaugalingon ko kung wala ka. 
+        Thank you sa pag ugtas kag pag paugtas sakon, thank you sa pag buga kalayo kag pag angga mo sakon. 
+        Gapangamuyo lang ko nga kabay pa maski ano matabo saton, wala may matabo nga bayaay. 
+        Kag kung ano man maabot saton nga duha, hinde ta mag talikdanay. 
+        Palangga tagid ka sobra sobra bee. Thank you sa pagiging best friend, manang, nanay, 
+        tita kag sa pagiging all in one.
+      </h4>
+      <h3 style="color:#ff4d4d;">I love you bee.</h3>`;
+    });
   </script>
-
 </body>
 </html>
