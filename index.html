@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Surprise</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #ffe6e6;
+      padding-top: 50px;
+    }
+
+    .heart {
+      font-size: 80px;
+      color: red;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    #message {
+      display: none;
+      margin-top: 30px;
+      font-size: 24px;
+      color: #d6336c;
+    }
+
+    .button {
+      padding: 12px 24px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff6699;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #e6005c;
+    }
+
+    #doubtText {
+      color: #b3003b;
+      font-size: 20px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">♥</div>
+  <h1>Click below for a Valentine's surprise!</h1>
+
+  <button class="button" onclick="showMessage()">Show Message</button>
+  <button class="button" onclick="hideMessage()">Hide Message</button>
+
+  <div id="message">
+      <h3>2 years, 2 months, 4 weeks.</h3>
+    Thank you bee sa tanan nga hinatag mo sakon, thank you sa pag palangga mo sakon, sa tanan nga natabo sakon bee ikaw ang pinaka manami nga nag abot sakon (double meaning) salamat simo bee kundi tungod simo di ko maimagine kaugalingon ko kung wala ka, thank you sa pag ugtas kg pag paugtas sakon, thank you sa pag buga kalayo kg pag angga mo sakon, gapangamuyo lg ko nga kabay pa maski ano matabo saton wala may matabo nga bayaay, kg kung ano man maabot saton nga duha hinde ta mag talikdanay, palangga tagd ka sobra sobra bee, thank you sa pagiging best friend, manang, nanay, tita kg sa pagiging all in one.
+
+I love you bee.
+
+  </div>
+
+  <div id="doubtText">
+    Show message lg bala nano man<br>
+    Sige na bala bee
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('doubtText').style.display = 'none';
+    }
+
+    function hideMessage() {
+      document.getElementById('message').style.display = 'none';
+      document.getElementById('doubtText').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
