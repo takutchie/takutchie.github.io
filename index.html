@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>I love you 24/7</title>
+  <title>Be My Valentine?</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       background-color: #ffe6e6;
       margin-top: 100px;
+      overflow: hidden;
+      position: relative;
     }
     h1 {
       color: #ff4d4d;
@@ -22,20 +24,28 @@
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s ease;
+      position: absolute;
     }
     #yesBtn {
       background-color: #ff4d4d;
       color: white;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 200px;
     }
     #noBtn {
       background-color: #ccc;
       color: #333;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 280px;
     }
     #message {
       font-size: 18px;
       color: #990000;
-      margin-top: 20px;
+      margin-top: 300px;
       height: 24px;
+      position: relative;
     }
   </style>
 </head>
@@ -49,7 +59,7 @@
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const message = document.getElementById('message');
-    let noBtnSize = 18;
+
     const messages = [
       "Ang isa ya bee",
       "Tung isa gani bee o",
@@ -64,10 +74,14 @@
 
     noBtn.addEventListener('click', () => {
       clickCount++;
-      noBtnSize -= 2;
-      if (noBtnSize <= 6) noBtnSize = 6;
-      noBtn.style.fontSize = noBtnSize + "px";
-      noBtn.style.padding = (noBtnSize / 2) + "px " + (noBtnSize) + "px";
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+
+      noBtn.style.left = `${randX}px`;
+      noBtn.style.top = `${randY}px`;
+
       message.textContent = messages[clickCount % messages.length];
     });
 
