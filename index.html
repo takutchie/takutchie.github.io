@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Be My Valentine?</title>
+  <title>I love you 24/7</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -74,8 +74,11 @@
 
     noBtn.addEventListener('click', () => {
       clickCount++;
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+      const maxX = window.innerWidth - btnWidth;
+      const maxY = window.innerHeight - btnHeight;
+
       const randX = Math.random() * maxX;
       const randY = Math.random() * maxY;
 
